@@ -10,7 +10,7 @@ use Storable;
 
 use Ticketmaster::API;
 
-my $api_key  = 'hPpCKOv5DletchKf3sg3hdQDorR2EGdI';
+my $api_key  = 'testAPIkey';
 my $mode = 'GET';
 my $path_template = 'discovery/%s/events.json';
 my %parameters = (

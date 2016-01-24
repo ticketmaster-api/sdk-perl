@@ -13,7 +13,7 @@ BEGIN {
     #use_ok( 'Ticketmaster::API' ) || print "Bail out!\n";
 }
 
-my $api_key  = 'hPpCKOv5DletchKf3sg3hdQDorR2EGdI';
+my $api_key  = 'testAPIkey';
 
 my $obj = Ticketmaster::API->new(api_key => $api_key);
 

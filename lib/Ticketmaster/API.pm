@@ -93,6 +93,7 @@ sub get_data {
     my %parameters = exists $args{parameters} ? %{$args{parameters}} : ();
 
     my $uri = $self->base_uri;
+    $uri .= '/' unless $uri =~ /\/$/;
     $uri .= sprintf($path_template, $self->version());
 
     $uri .= '?apikey=' . $self->api_key();

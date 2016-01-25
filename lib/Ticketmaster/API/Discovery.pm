@@ -17,7 +17,6 @@ Version 0.01
 our $VERSION = '0.01';
 use parent 'Ticketmaster::API';
 
-use Erik qw(log);
 my $base_uri = 'discovery/%s';
 
 =head1 SYNOPSIS
@@ -47,7 +46,6 @@ Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#sr
 sub search_events {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
     return $self->get_data(mode => 'GET', path_template => "$base_uri/events.json", parameters => $args);
 }
@@ -56,7 +54,6 @@ sub search_events {
 sub event_details {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
     my $id = delete $args->{id} || die("No event id provided\n");
 
@@ -67,7 +64,6 @@ sub event_details {
 sub event_images {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
     my $id = delete $args->{id} || die("No event id provided\n");
 
@@ -78,7 +74,6 @@ sub event_images {
 sub search_attractions {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
     return $self->get_data(mode => 'GET', path_template => "$base_uri/attractions.json", parameters => $args);
 }
@@ -87,7 +82,6 @@ sub search_attractions {
 sub attraction_details {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
     my $id = delete $args->{id} || die("No attraction id provided\n");
 
@@ -98,9 +92,7 @@ sub attraction_details {
 sub search_categories {
     my $self = shift;
     my $args = {@_};
-    Erik::method();
 
-Erik::dump(args => $args);
     return $self->get_data(mode => 'GET', path_template => "$base_uri/categories.json", parameters => $args);
 }
 

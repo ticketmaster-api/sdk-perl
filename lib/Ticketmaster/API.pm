@@ -35,10 +35,31 @@ To be able to interact with Ticketmaster's APIs you'll need to get an API key.
 General documentation can be found here: http://ticketmaster-api.github.io
 
 
+=head1 NOTES
+
+=over 2
+
+=item Mozilla::CA
+
+Since connections are made via https Mozilla::CA will most likely need to be installed.
+
+=back
+
 
 =head1 SUBROUTINES/METHODS
 
 =head2 new
+
+Create a new instance of Ticketmaster::API.
+
+  # use the default base_uri and version infromation
+  my $tm_api = Ticketmaster::API->new(api_key => $api_key);
+
+  my $tm_api = Ticketmaster::API->new(
+    api_key  => $api_key,
+    base_uri => 'https://new_api_endpoint.ticketmaster.com',
+    version  => 'v2'
+  );
 
 =cut
 
@@ -60,7 +81,7 @@ sub new {
 
 =head2 base_uri
 
-Set/Get the base end point for the Ticketmaster API.
+Set/Get the base endpoint for the Ticketmaster API.
 
 Default: https://app.ticketmaster.com
 
@@ -101,6 +122,33 @@ sub api_key {
     return $self->{api_key};
 }
 
+=head2 get_data
+
+Connect to the TM API to receive the information being requested.
+
+  my $res = $tm_api->get_data(method => 'GET', path_template => '/discovery/%s/events');
+
+=over 2
+
+=item method
+
+The REST method to execute on the endpoint.  IE: GET
+
+=item path_template
+
+A sprintf template that will be combined with the base_uri value to generate the final endpoint.
+
+Example: /discovery/%s/events
+
+The '%s' is the location of the version number of the API being hit.
+
+=item parameters
+
+A hash reference of any parameters that are to be added to the endpoint
+
+=back
+
+=cut
 # Requires: method, path_template (sprintf string), parameters (hash ref)
 sub get_data {
     my $self = shift;

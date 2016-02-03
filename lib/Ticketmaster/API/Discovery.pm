@@ -21,14 +21,14 @@ my $base_uri = 'discovery/%s';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+    Ticketmaster's Discovery API is used to search, look up and find events, attractions and venues.
 
-Perhaps a little code snippet.
+    For more information also see: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/
 
     use Ticketmaster::API::Discovery;
 
-    my $tm_api = Ticketmaster::API::Discovery->new( api_key => 'abc123');
-    ...
+    my $tm_api = Ticketmaster::API::Discovery->new(api_key => 'abc123');
+    my $events = $tm_api->search_events();
 
 =head1 SUBROUTINES/METHODS
 
@@ -37,6 +37,8 @@ Perhaps a little code snippet.
 Returns the 20 most recent events for the authenticating user.
 
 Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#srch-events
+
+    my $ret = $tm_api->search_events();
 
 =cut
 
@@ -49,11 +51,11 @@ sub search_events {
 
 =head2 event_details
 
-Returns the event detail by event ID.
+Returns the event details by event ID.
 
 Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-details
 
-  $api_obj->event_details(id => 1234, ...);
+    my $ret = $tm_api->event_details(id => 1234, ...);
 
 =over 2
 
@@ -83,7 +85,7 @@ Returns all event images by event ID.
 
 Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-img
 
-  $api_obj->event_images(id => 1234, ...);
+  my $ret = $tm_api->event_images(id => 1234, ...);
 
 =over 2
 
@@ -109,17 +111,13 @@ sub event_images {
 
 =head2 search_attractions
 
-Returns the event detail by event ID.
+Returns available attactions
 
 Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-attractions
 
-  $api_obj->search_attractions(id => 1234, ...);
+  my $ret = $tm_api->search_attractions(...);
 
 =over 2
-
-=item id
-
-event id
 
 =item ...
 
@@ -135,7 +133,27 @@ sub search_attractions {
     return $self->get_data(method => 'GET', path_template => "$base_uri/attractions.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#attraction-details
+=head2 attraction_details
+
+Returns attraction deatils by attraction ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#attraction-details
+
+  my $ret = $tm_api->attraction_details(id => 1234, ...);
+
+=over 2
+
+=item id
+
+attraction id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub attraction_details {
     my $self = shift;
     my $args = {@_};
@@ -145,7 +163,23 @@ sub attraction_details {
     return $self->get_data(method => 'GET', path_template => "$base_uri/attractions/$id.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-categories
+=head2 search_categories
+
+Returns available categories
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-categories
+
+  my $ret = $tm_api->search_categories(...);
+
+=over 2
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub search_categories {
     my $self = shift;
     my $args = {@_};
@@ -153,7 +187,27 @@ sub search_categories {
     return $self->get_data(method => 'GET', path_template => "$base_uri/categories.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#category-details
+=head2 category_details
+
+Returns category deatils by category ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#category-details
+
+  my $ret = $tm_api->category_details(id => 1234, ...);
+
+=over 2
+
+=item id
+
+category id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub category_details {
     my $self = shift;
     my $args = {@_};
@@ -163,7 +217,23 @@ sub category_details {
     return $self->get_data(method => 'GET', path_template => "$base_uri/categories/$id.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-venues
+=head2 search_venues
+
+Returns available venues
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-venues
+
+  my $ret = $tm_api->search_venues(...);
+
+=over 2
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub search_venues {
     my $self = shift;
     my $args = {@_};
@@ -171,7 +241,27 @@ sub search_venues {
     return $self->get_data(method => 'GET', path_template => "$base_uri/venues.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#venue-details
+=head2 venue_details
+
+Returns venue deatils by venue ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#venue-details
+
+  my $ret = $tm_api->venue_details(id => 1234, ...);
+
+=over 2
+
+=item id
+
+venue id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub venue_details {
     my $self = shift;
     my $args = {@_};
@@ -183,7 +273,7 @@ sub venue_details {
 
 =head1 AUTHOR
 
-Erik Tank, C<< <erik.tank at ticketmaster.com> >>
+Erik Tank, C<< <tank at jundy.com> >>
 
 =head1 BUGS
 

@@ -10,7 +10,7 @@ use LWP::UserAgent;
 
 =head1 NAME
 
-Ticketmaster::API - The great new Ticketmaster::API!
+Ticketmaster::API - start interacting with Ticketmaster's APIs
 
 =head1 VERSION
 
@@ -23,23 +23,22 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Core module to facilitate interacting with Ticketmaster's APIs.
 
-Perhaps a little code snippet.
+Unless you are creating unique way to connect to Ticketmaster's API you probably
+don't want this module.  Please see one of the following:
 
-    use Ticketmaster::API;
+    Ticketmaster::API::Discover
 
-    my $foo = Ticketmaster::API->new();
-    ...
+To be able to interact with Ticketmaster's APIs you'll need to get an API key.
 
-=head1 EXPORT
+General documentation can be found here: http://ticketmaster-api.github.io
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 new
 
 =cut
 
@@ -59,6 +58,13 @@ sub new {
     return $self;
 }
 
+=head2 base_uri
+
+Set/Get the base end point for the Ticketmaster API.
+
+Default: https://app.ticketmaster.com
+
+=cut
 sub base_uri {
     my $self = shift;
 
@@ -67,6 +73,13 @@ sub base_uri {
     return $self->{base_uri};
 }
 
+=head2 base_uri
+
+Set/Get the version of the Ticketmaster API that is currently being hit.
+
+Default: v1
+
+=cut
 sub version {
     my $self = shift;
 
@@ -75,6 +88,11 @@ sub version {
     return $self->{version};
 }
 
+=head2 api_key
+
+Set/Get the user's API key to the Ticketmaster API.
+
+=cut
 sub api_key {
     my $self = shift;
 
@@ -118,15 +136,13 @@ sub get_data {
 
 =head1 AUTHOR
 
-Erik Tank, C<< <erik.tank at ticketmaster.com> >>
+Erik Tank, C<< <tank at jundy.com> >>
 
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-ticketmaster-api at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Ticketmaster-API>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT

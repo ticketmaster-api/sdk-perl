@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Ticketmaster::API::Discovery - The great new Ticketmaster::API::Discovery!
+Ticketmaster::API::Discovery - search, look up and find event, attractions and venues
 
 =head1 VERSION
 
@@ -27,17 +27,14 @@ Perhaps a little code snippet.
 
     use Ticketmaster::API::Discovery;
 
-    my $foo = Ticketmaster::API::Discovery->new();
+    my $tm_api = Ticketmaster::API::Discovery->new( api_key => 'abc123');
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
 =head2 search_events
+
+Returns the 20 most recent events for the authenticating user.
 
 Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#srch-events
 
@@ -50,7 +47,27 @@ sub search_events {
     return $self->get_data(mode => 'GET', path_template => "$base_uri/events.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-details
+=head2 event_details
+
+Returns the event detail by event ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-details
+
+  $api_obj->event_details(id => 1234, ...);
+
+=over 2
+
+=item id
+
+event id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub event_details {
     my $self = shift;
     my $args = {@_};
@@ -60,7 +77,27 @@ sub event_details {
     return $self->get_data(mode => 'GET', path_template => "$base_uri/events/$id.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-img
+=head2 event_images
+
+Returns all event images by event ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#event-img
+
+  $api_obj->event_images(id => 1234, ...);
+
+=over 2
+
+=item id
+
+event id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub event_images {
     my $self = shift;
     my $args = {@_};
@@ -70,7 +107,27 @@ sub event_images {
     return $self->get_data(mode => 'GET', path_template => "$base_uri/events/$id/images.json", parameters => $args);
 }
 
-#http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-attractions
+=head2 search_attractions
+
+Returns the event detail by event ID.
+
+Also See: http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-attractions
+
+  $api_obj->search_attractions(id => 1234, ...);
+
+=over 2
+
+=item id
+
+event id
+
+=item ...
+
+other options available in key/value pairs
+
+=back
+
+=cut
 sub search_attractions {
     my $self = shift;
     my $args = {@_};

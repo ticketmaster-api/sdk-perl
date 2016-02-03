@@ -101,12 +101,12 @@ sub api_key {
     return $self->{api_key};
 }
 
-# Requires: mode, path_template (sprintf string), parameters (hash ref)
+# Requires: method, path_template (sprintf string), parameters (hash ref)
 sub get_data {
     my $self = shift;
     my %args = @_;
 
-    my $mode = $args{mode} || Carp::croak("No mode provided (GET)");
+    my $method = $args{method} || Carp::croak("No method provided (GET)");
     my $path_template = $args{path_template} || Carp::croak("No URI template provided");
     my %parameters = exists $args{parameters} ? %{$args{parameters}} : ();
 
@@ -122,7 +122,7 @@ sub get_data {
 
     my $ua = LWP::UserAgent->new;
 
-    my $req = HTTP::Request->new($mode => $uri);
+    my $req = HTTP::Request->new($method => $uri);
 
     my $res = $ua->request($req);
 

@@ -44,7 +44,7 @@ sub search_events {
     my $self = shift;
     my $args = {@_};
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/events.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/events.json", parameters => $args);
 }
 
 =head2 event_details
@@ -74,7 +74,7 @@ sub event_details {
 
     my $id = delete $args->{id} || die("No event id provided\n");
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/events/$id.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/events/$id.json", parameters => $args);
 }
 
 =head2 event_images
@@ -104,7 +104,7 @@ sub event_images {
 
     my $id = delete $args->{id} || die("No event id provided\n");
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/events/$id/images.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/events/$id/images.json", parameters => $args);
 }
 
 =head2 search_attractions
@@ -132,7 +132,7 @@ sub search_attractions {
     my $self = shift;
     my $args = {@_};
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/attractions.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/attractions.json", parameters => $args);
 }
 
 #http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#attraction-details
@@ -142,7 +142,7 @@ sub attraction_details {
 
     my $id = delete $args->{id} || die("No attraction id provided\n");
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/attractions/$id.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/attractions/$id.json", parameters => $args);
 }
 
 #http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-categories
@@ -150,7 +150,7 @@ sub search_categories {
     my $self = shift;
     my $args = {@_};
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/categories.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/categories.json", parameters => $args);
 }
 
 #http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#category-details
@@ -160,7 +160,7 @@ sub category_details {
 
     my $id = delete $args->{id} || die("No category id provided\n");
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/categories/$id.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/categories/$id.json", parameters => $args);
 }
 
 #http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#search-venues
@@ -168,7 +168,7 @@ sub search_venues {
     my $self = shift;
     my $args = {@_};
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/venues.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/venues.json", parameters => $args);
 }
 
 #http://ticketmaster-api.github.io/products-and-docs/apis/discovery/#venue-details
@@ -178,7 +178,7 @@ sub venue_details {
 
     my $id = delete $args->{id} || die("No venue id provided\n");
 
-    return $self->get_data(mode => 'GET', path_template => "$base_uri/venues/$id.json", parameters => $args);
+    return $self->get_data(method => 'GET', path_template => "$base_uri/venues/$id.json", parameters => $args);
 }
 
 =head1 AUTHOR

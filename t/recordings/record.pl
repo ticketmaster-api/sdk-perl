@@ -12,7 +12,7 @@ use Ticketmaster::API;
 
 my $real_api_key  = 'realAPIkey';
 my $save_api_key  = 'testAPIkey';
-my $mode = 'GET';
+my $method = 'GET';
 my $path_template = 'discovery/%s/venues/341396.json';
 my %parameters = (
 );
@@ -27,7 +27,7 @@ die("record.pl needs to be run within the recordings directory") unless $0 eq 'r
 die("recording already exists: $recording_name\n") if -e $recording_name;
 
 my $obj = Ticketmaster::API->new(api_key => $real_api_key);
-my $res = $obj->get_data(mode => $mode, path_template => $path_template);
+my $res = $obj->get_data(method => $method, path_template => $path_template);
 
 store $res, $recording_name;
 

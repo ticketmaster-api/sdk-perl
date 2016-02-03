@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use lib '../../lib/';
 
-use Storable;
+use Storable qw(nstore);
 
 use Ticketmaster::API;
 
@@ -29,6 +29,6 @@ die("recording already exists: $recording_name\n") if -e $recording_name;
 my $obj = Ticketmaster::API->new(api_key => $real_api_key);
 my $res = $obj->get_data(method => $method, path_template => $path_template);
 
-store $res, $recording_name;
+nstore $res, $recording_name;
 
 print "$recording_name populated\n";

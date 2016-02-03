@@ -16,17 +16,17 @@ my $default_uri     = 'https://app.ticketmaster.com';
 my $default_version = 'v1';
 my $base_uri        = 'http://nothing.com';
 
-my $obj = Ticketmaster::API->new(api_key => $api_key);
-is($obj->api_key, $api_key, 'Confirm api_key');
-is($obj->base_uri, $default_uri, 'Default URI found');
-is($obj->version, $default_version, 'Default Version found');
+my $tm_api = Ticketmaster::API->new(api_key => $api_key);
+is($tm_api->api_key, $api_key, 'Confirm api_key');
+is($tm_api->base_uri, $default_uri, 'Default URI found');
+is($tm_api->version, $default_version, 'Default Version found');
 
-$obj = Ticketmaster::API->new( api_key => $api_key, base_uri => 'http://nothing.com', version => 'v2');
-is($obj->base_uri, $base_uri, 'Correct URI found');
-is($obj->version, 'v2', 'Correct Version found');
+$tm_api = Ticketmaster::API->new( api_key => $api_key, base_uri => 'http://nothing.com', version => 'v2');
+is($tm_api->base_uri, $base_uri, 'Correct URI found');
+is($tm_api->version, 'v2', 'Correct Version found');
 
-$obj->api_key('something_new');
-is($obj->api_key(), 'something_new', 'New API Key found');
+$tm_api->api_key('something_new');
+is($tm_api->api_key(), 'something_new', 'New API Key found');
 
 # Exceptions
 eval { my $api = Ticketmaster::API->new(); };

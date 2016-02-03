@@ -2,7 +2,7 @@ Ticketmaster-API
 
 Group of modules to interact with Ticketmaster Public API.
 
-General documentation can be found here: http://ticketmaster-api.github.io
+General documentation for Ticketmaster's API can be found here: http://ticketmaster-api.github.io
 
 To be able to interact with Ticketmaster's APIs you'll need to get an API key which can be optained with an account here: https://dev-livenation.devportal.apigee.com/user/login
 

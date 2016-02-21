@@ -1,8 +1,8 @@
 # The Ticketmaster Perl SDK
 
-Group of modules to interact with Ticketmaster API. Documentation for the API can be found here: http://ticketmaster-api.github.io/
+Group of modules to interact with Ticketmaster API. Documentation for the API can be found here: http://developer.ticketmaster.com/
 
-To get started with the API, you'll need to get an API key which can be optained with an account here: https://dev-livenation.devportal.apigee.com/user/login
+To get started with the API, you'll need to get an API key which can be optained with an account here: https://developer-acct.ticketmaster.com/user/login
 
 ## INSTALLATION
 
